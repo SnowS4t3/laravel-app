@@ -12,5 +12,22 @@ class ContactController extends Controller
         return view('contact.index');
     }
 
+    public function confirm()
+    {
+        return view('contact.confirm');
+    }
+
+    public function thanks()
+    {
+        return view('contact.thanks');
+    }
+    public function datail()
+    {
+        return view('contact.datail');
+    }
+    public function list()
+    {
+        return view('contact.list');
+    }
 
 }
