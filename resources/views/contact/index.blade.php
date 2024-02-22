@@ -16,26 +16,36 @@
             </ul>
         </div>
         <body>
-            <form action="confirm.php" method="POST">
+            <form action="{{route('contact.confirm')}}" method="POST">
+                @csrf
                 <div class="form">
-                    <div class="">
+                    <div class="form_title">
                         <label for="name"><td>名前</td><span>必須</span></label>
                         <div class="">
-                            <input type="text" name="name" value="<?php echo $_POST["name"]; ?>">
+                            <input type="text" name="name" value="{{old('name')}}">
+                            @if($errors->has('name'))
+                                {{ $errors->first('name') }}<br>
+                            @endif
                         </div>
                     </div>
 
-                    <div class="">
+                    <div class="form_title">
                         <label for="mail"><td>メールアドレス</td><span>必須</span></label>
                         <div class="">
-                            <input type="text" name="mail" value="<?php echo $_POST["mail"]; ?>">
+                            <input type="text" name="mail" value="{{old('mail')}}">
+                            @if($errors->has('mail'))
+                                {{ $errors->first('mail') }}<br>
+                            @endif
                         </div>
                     </div>
 
-                    <div class="">
+                    <div class="form_title">
                         <label for="comment"><td>本文</td><span>必須</span></label>
                         <div class="">
-                            <input type="text" name="comment" value="<?php echo $_POST["comment"]; ?>">
+                            <input type="text" name="comment" value="{{old('comment')}}">
+                            @if($errors->has('comment'))
+                                {{ $errors->first('comment') }}<br>
+                            @endif
                         </div>
                     </div>
                     

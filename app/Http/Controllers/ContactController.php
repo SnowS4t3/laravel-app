@@ -16,10 +16,8 @@ class ContactController extends Controller
     {
         $validation_rules = [
             'name' => ['required', 'string', 'max:255'],
-            'tel' => ['nullable', 'string', 'max:20', 'regex:/^(0{1}\d{1,4}-{0,1}\d{1,4}-{0,1}\d{4})$/'],
-            'mail' => ['required', 'string', 'regex:/^[\+\w.-]+@([\w.-]+)$/', 'max:255', 'same:mail_confirmation'],
-            'title' => ['required', 'string'],
-            'content' => ['required', 'string'],
+            'mail' => ['required', 'string', 'regex:/^[\+\w.-]+@([\w.-]+)$/', 'max:255'],
+            'comment' => ['required', 'string'],
         ];
 
         $data = $request->validate($validation_rules);
@@ -30,9 +28,9 @@ class ContactController extends Controller
 
     public function send(Request $request)
     {
-        $data = $request->only(['name','tel', 'mail', 'title', 'content']);
+        $data = $request->only(['name', 'mail','comment']);
 
-        $attributes = $request->only(['name', 'tel', 'mail', 'title', 'content']);
+        $attributes = $request->only(['name', 'mail','comment']);
 
         Contact::create($attributes);
 

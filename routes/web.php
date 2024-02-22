@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('contact/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
-Route::post('contact/thanks', [ContactController::class, 'thanks'])->name('contact.thanks');
+Route::post('contact/thanks', [ContactController::class, 'send'])->name('contact.send');
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 Route::get('contact/list', [ContactController::class, 'list'])->name('contact.list');
 Route::get('/contact/{id}', [ContactController::class, 'detail'])->whereNumber('id')->name('contact.detail');
