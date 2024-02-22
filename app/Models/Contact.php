@@ -11,4 +11,14 @@ class Contact extends Model
     protected $table = 'contact';
     protected $fillable = ['name', 'mail','comment'];
 
+    public function findAllContacts()
+    {
+        return Contact::all();
+    }
+
+    // public function contact()
+    // {
+    //     return $this->belongsTo(Contact::class);
+    // }
+
 }

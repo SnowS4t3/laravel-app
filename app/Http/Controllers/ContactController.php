@@ -36,15 +36,31 @@ class ContactController extends Controller
 
         return view('contact.thanks', $data);
     }
-    
-    public function datail()
+
+    public function __construct()
     {
-        return view('contact.datail');
-    }
-    public function list()
-    {
-        return view('contact.list');
+        $this->contact = new Contact();
     }
 
+
+    public function list()
+    {
+
+        $contact = $this->contact->findAllContacts();
+
+        return view('contact.list',compact('contact'));
+
+        // $contact = Contact::all();
+
+        // return view('contact.list',['contact'=>$contact]);
+    }
+
+    public function detail($id)
+    {
+        $contact = Contact::find($id);
+
+        return view('contact.detail',compact('contact'));
+    }
+    
 
 }
