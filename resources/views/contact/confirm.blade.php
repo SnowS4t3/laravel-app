@@ -21,21 +21,21 @@
                 <div class="">
                     <td>名前</td><span>必須</span>
                     <div class="">
-                        <input type="text" name="name" value="{{ $name }}" disabled>
+                        <input type="text" name="name" value="{{ $name }}" readonly>
                     </div>
                 </div>
 
                 <div class="">
                     <td>メールアドレス</td><span>必須</span>
                     <div class="">
-                        <input type="text" name="mail" value="{{ $mail }}" disabled>
+                        <input type="text" name="mail" value="{{ $mail }}" readonly>
                     </div>
                 </div>
 
                 <div class="">
                     <td>本文</td><span>必須</span>
                     <div class="">
-                        <input type="text" name="comment" value="{{ $comment }}" disabled>
+                        <input type="text" name="comment" value="{{ $comment }}" readonly>
                     </div>
                 </div>
                 
