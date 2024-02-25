@@ -62,5 +62,16 @@ class ContactController extends Controller
         return view('contact.detail',compact('contact'));
     }
     
+    public function destroy($id)
+    {
+        $deliteContact = $this->contact->deleteContactById($id);
+
+        return redirect()->route('contact.list');
+
+        // $contact = Contact::find($id);
+        // $contact->deleted();
+        // return redirect()->route('contact.list');
+        // return view('contact.deleted', ['id' => $id]);
+    }
 
 }
