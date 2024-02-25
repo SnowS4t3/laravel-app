@@ -16,9 +16,17 @@ class Contact extends Model
         return Contact::all();
     }
 
-    // public function contact()
-    // {
-    //     return $this->belongsTo(Contact::class);
-    // }
+    public function __contact()
+    {
+        $this->contact = new Contact();
+        // return $this->belongsTo(Contact::class);
+    }
+
+    public function deleteContactById($id)
+    {
+        // $deleted = Contact::where('id',$id)->delete();
+        // return $deleted;
+        return $this->destroy($id);
+    }
 
 }

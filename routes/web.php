@@ -26,3 +26,5 @@ Route::post('contact/thanks', [ContactController::class, 'send'])->name('contact
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 Route::get('contact/list', [ContactController::class, 'list'])->name('contact.list');
 Route::get('/contact/{id}', [ContactController::class, 'detail'])->whereNumber('id')->name('contact.detail');
+// 本の削除
+Route::post('contact/destroy{id}', [ContactController::class, 'destroy'])->name('contact.destroy');

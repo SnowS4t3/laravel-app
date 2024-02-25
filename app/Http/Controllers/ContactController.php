@@ -64,14 +64,14 @@ class ContactController extends Controller
     
     public function destroy($id)
     {
-        $deliteContact = $this->contact->deleteContactById($id);
+        // $deleteContact = $this->contact->deleteContactById($id);
+        $deleteContact = $this->contact->deleteContactById($id);
 
-        return redirect()->route('contact.list');
+        return redirect()->route('contact.destroy');
 
         // $contact = Contact::find($id);
         // $contact->deleted();
         // return redirect()->route('contact.list');
         // return view('contact.deleted', ['id' => $id]);
     }
-
 }
