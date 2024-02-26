@@ -19,10 +19,14 @@
             <td>{{ $contact->comment }}</td>
             <td><a href="{{route('contact.detail', ['id' => $contact->id])}}" class="contact-button">詳細</a></td>
             <td>
-                <from action="{{ route('contact.destroy',['id'=>$contact->id]) }}" method="POST" >
+                <form action="{{ route('contact.destroy', ['id' => $contact->id]) }}" method="post">
                     @csrf
-                    <button type="submit" class="btn btn-danger">削除</button>
-                </from>
+                    @method('DElETE')
+                    <button type="submit" onClick="return confirm('本当に削除しますか？')">削除する</button>
+                </form>      
+                
+                
+                
             </td>
         </tr>
         @endforeach
