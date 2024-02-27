@@ -30,9 +30,7 @@
                         @csrf
                         @method('DElETE')
                         <button type="submit" class="button-list" onClick="return confirm('本当に削除しますか？')">削除する</button>
-                    </form>      
-                    
-                    
+                    </form>       
                     
                 </td>
             </tr>
