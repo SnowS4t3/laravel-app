@@ -21,7 +21,7 @@
         </div>
 
         <div class="submit">
-            <a href={{ route('contact.index') }} class="button">お問い合わせ一覧に戻る</a><br>
+            <a href={{ route('contact.index') }} class="button">お問い合わせページに戻る</a><br>
 
 
             <a href="/" class="button">TOPに戻る</a>

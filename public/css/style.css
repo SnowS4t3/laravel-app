@@ -231,6 +231,7 @@ img {
   text-align: center;
 }
 .button {
+  border: none;
   display: inline-block;
   margin-top: 10px;
   text-align: center;
@@ -243,6 +244,61 @@ img {
   border-radius: 6px;
 }
 .button:hover {
+  color         : #ffffff;     /* 背景色     */
+  background    : #4b4b4b;    /* 文字色     */
+}
+/* .form_list {
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1300px;
+} */
+
+@media screen and (max-width: 480px) {
+  .form {
+      margin-top: 40px;
+  }
+}
+.contact-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.contact-table th {
+  padding: 10px;
+  text-align: left;
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #ddd;
+}
+
+/* テーブルデータ行のスタイル（奇数行） */
+.contact-table tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+/* テーブルデータ行のスタイル（偶数行） */
+.contact-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* テーブルセルのスタイル */
+.contact-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.button-list {
+  border: none;
+  display: inline-block;
+  text-align: center;
+  width: 80px;
+  background: #c7c7c7;
+  color         : #ffffff;     /* 文字色     */
+  padding: 1em 0;
+  position: relative;
+  z-index: 1;
+  border-radius: 6px;
+}
+.button-list:hover {
   color         : #ffffff;     /* 背景色     */
   background    : #4b4b4b;    /* 文字色     */
 }
