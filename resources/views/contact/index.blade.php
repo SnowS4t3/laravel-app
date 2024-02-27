@@ -1,8 +1,10 @@
 <!DOCTYPE html>
     <head>
-        お問い合わせページ
+
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
     </head>
-            <div class="step">
+            <div class="box_step">
             <ul>
                 <li class="active">
                     <span>入力</span>
@@ -50,7 +52,7 @@
                     </div>
                     
                     <div class="submit">
-                        <input type=submit value="入力内容を確認する">
+                        <input type=submit value="入力内容を確認する" class="button">
                     </div>
 
                 </div>

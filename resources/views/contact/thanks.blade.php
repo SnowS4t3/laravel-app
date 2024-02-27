@@ -1,8 +1,9 @@
 <!DOCTYPE html>
     <head>
-        お問い合わせページ
+
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
-            <div class="step">
+        <div class="box_step">
             <ul>
                 <li>
                     <span>入力</span>
@@ -15,13 +16,17 @@
                 </li>
             </ul>
         </div>
-        <h2>お問い合わせを受け付けました</h2>
-
-                
-        <div class="link">
-            <a href="/">TOPに戻る</a>
+        <div class="contact">
+            <h2>お問い合わせを受け付けました</h2>
         </div>
+
+        <div class="submit">
+            <a href={{ route('contact.index') }} class="button">お問い合わせ一覧に戻る</a><br>
+
+
+            <a href="/" class="button">TOPに戻る</a>
+
                     
-            </div>
+        </div>
         
         </form>
