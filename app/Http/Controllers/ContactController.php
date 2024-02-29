@@ -48,7 +48,7 @@ class ContactController extends Controller
 
         $contacts = $this->contact->findAllContacts();
 
-        return view('contact.list',compact('contacts'));
+        return view('admin.list',compact('contacts'));
 
     }
 
@@ -56,13 +56,13 @@ class ContactController extends Controller
     {
         $contact = Contact::find($id);
 
-        return view('contact.detail',compact('contact'));
+        return view('admin.detail',compact('contact'));
     }
     
     public function destroy($id)
     {
         $this->contact->deleteContactById($id);
 
-        return redirect()->route('contact.list');
+        return redirect()->route('admin.list');
     }
 }

@@ -9,4 +9,4 @@
 </ul>
 
 <a href="/" class="back-to-top-link">TOPに戻る</a>
-<a href={{ route('contact.list') }} class="back-to-top-link">お問い合わせ一覧に戻る</a>
+<a href={{ route('admin.list') }} class="back-to-top-link">お問い合わせ一覧に戻る</a>

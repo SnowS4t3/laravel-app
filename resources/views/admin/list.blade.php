@@ -24,9 +24,9 @@
                 <td>{{ $contact->name }}</td>
                 <td>{{ $contact->mail }}</td>
                 <td>{{ $contact->comment }}</td>
-                <td><a href="{{route('contact.detail', ['id' => $contact->id])}}" class="button-list">詳細</a></td>
+                <td><a href="{{route('admin.detail', ['id' => $contact->id])}}" class="button-list">詳細</a></td>
                 <td>
-                    <form action="{{ route('contact.destroy', ['id' => $contact->id]) }}" method="post">
+                    <form action="{{ route('admin.destroy', ['id' => $contact->id]) }}" method="post">
                         @csrf
                         @method('DElETE')
                         <button type="submit" class="button-list" onClick="return confirm('本当に削除しますか？')">削除する</button>
