@@ -19,7 +19,7 @@
                 </tr>
             </thead>
 
-            @foreach ($contact as $contact)
+            @foreach ($contacts as $contact)
             <tr>
                 <td>{{ $contact->name }}</td>
                 <td>{{ $contact->mail }}</td>

@@ -147,6 +147,28 @@ img {
       font-size: 15px;
   }
 }
+.form .form_input {
+  padding: 10px;
+  width: 70%;
+  border: 1px solid #dcdcdc;
+  flex-grow: 1;
+}
+.form .form_input span {
+  color: #ff4500;
+}
+.form .form_input .confirm {
+  color: #ff6347;
+  font-weight: bold;
+}
+.form .form_input input {
+  width: 95%;
+  border: 1px solid #c0c0c0;
+}
+.form .form_input textarea {
+  width: 95%;
+  height: 100px;
+  border: 1px solid #c0c0c0;
+}
 
 .form_title span {
   border-radius: 6px;

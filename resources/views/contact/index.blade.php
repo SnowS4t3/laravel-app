@@ -60,15 +60,3 @@
             </form>
                     
         </body>
-
-        
-        {{-- <form method="POST" action="confirm.php">
-            <label for="name">お名前</label><span>必須</span><br>
-            <input type="text" id="name" name="name"><br>
-            <label for="email">メールアドレス</label><span>必須</span>
-            <input type="email" id="email" name="email"><br>
-            <label for="comment">お問い合わせ内容</label><span>必須</span>
-            <input type="text" name="comment" id="comment"><br>
-            <input type="submit" value="送信">
-        </form> --}}
-

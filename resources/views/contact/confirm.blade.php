@@ -21,22 +21,25 @@
             <div class="form">
                 <div class="form_title">
                     <td>名前</td><span>必須</span>
-                    <div class="">
-                        <input type="text" name="name" value="{{ $name }}" readonly>
+                    <div class="form_input">
+                        <input type="hidden" name="name" value="{{ $name }}">
+                        {{ $name }}
                     </div>
                 </div>
 
                 <div class="form_title">
                     <td>メールアドレス</td><span>必須</span>
-                    <div class="">
-                        <input type="text" name="mail" value="{{ $mail }}" readonly>
+                    <div class="form_input">
+                        <input type="hidden" name="mail" value="{{ $mail }}">
+                        {{ $mail }}
                     </div>
                 </div>
 
                 <div class="form_title">
                     <td>本文</td><span>必須</span>
-                    <div class="">
-                        <input type="text" name="comment" value="{{ $comment }}" readonly>
+                    <div class="form_input">
+                        <input type="hidden" name="comment" value="{{ $comment }}">
+                        {{ $comment }}
                     </div>
                 </div>
                 

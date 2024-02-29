@@ -46,13 +46,10 @@ class ContactController extends Controller
     public function list()
     {
 
-        $contact = $this->contact->findAllContacts();
+        $contacts = $this->contact->findAllContacts();
 
-        return view('contact.list',compact('contact'));
+        return view('contact.list',compact('contacts'));
 
-        // $contact = Contact::all();
-
-        // return view('contact.list',['contact'=>$contact]);
     }
 
     public function detail($id)
@@ -64,18 +61,8 @@ class ContactController extends Controller
     
     public function destroy($id)
     {
-        // $deleteContact = $this->contact->deleteContactById($id);
-        // $deleteContact = $this->contact->deleteContactById($id);
-
-        // return redirect()->route('contact.destroy');
-
-        // $contact = Contact::find($id);
-        // $contact->deleted();
-        // return redirect()->route('contact.list');
-        // return view('contact.deleted', ['id' => $id]);
         $this->contact->deleteContactById($id);
 
-        // return redirect()->route('contact.destroy', ['id' => $id]);
         return redirect()->route('contact.list');
     }
 }
