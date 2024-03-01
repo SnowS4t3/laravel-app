@@ -324,3 +324,24 @@ img {
   color         : #ffffff;     /* 背景色     */
   background    : #4b4b4b;    /* 文字色     */
 }
+
+.label {
+  color         : #ffffff;     /* 背景色     */
+  background    : #c7c7c7;    /* 文字色     */
+  border-radius: 3px;
+  padding:7px;
+}
+
+.label-danger {
+  color: white;
+  background-color: rgba(249, 100, 100, 0.623);
+  border-radius: 3px;
+  padding:7px;
+}
+
+.label-info {
+  color: white;
+  background-color: rgb(86, 148, 247);
+  border-radius: 3px;
+  padding:7px;
+}

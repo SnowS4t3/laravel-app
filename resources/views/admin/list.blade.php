@@ -14,8 +14,10 @@
                     <th>お名前</th>
                     <th>メールアドレス</th>
                     <th>お問い合わせ内容</th>
-                    <th></th>
-                    <th></th>
+                    <th>状態</th>
+                    <th>詳細</th>
+                    <th>更新日時</th>
+                    <th>削除</th>
                 </tr>
             </thead>
 
@@ -24,9 +26,13 @@
                 <td>{{ $contact->name }}</td>
                 <td>{{ $contact->mail }}</td>
                 <td>{{ $contact->comment }}</td>
-                <td><a href="{{route('contact.detail', ['id' => $contact->id])}}" class="button-list">詳細</a></td>
                 <td>
-                    <form action="{{ route('contact.destroy', ['id' => $contact->id]) }}" method="post">
+                    <span class="label {{ $contact->status_class }}">{{ $contact->status_label }}</span>
+                </td>
+                <td><a href="{{route('admin.detail', ['id' => $contact->id])}}" class="button-list">詳細</a></td>
+                <td><time>{{ date('Y年n月j日', strtotime($contact->updated_at)) }}</time></td>
+                <td>
+                    <form action="{{ route('admin.destroy', ['id' => $contact->id]) }}" method="post">
                         @csrf
                         @method('DElETE')
                         <button type="submit" class="button-list" onClick="return confirm('本当に削除しますか？')">削除する</button>
