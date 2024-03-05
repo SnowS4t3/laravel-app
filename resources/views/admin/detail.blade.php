@@ -35,7 +35,7 @@
                 </div>
 
             <div class="submit">
-                <input type=submit  value="送信" class="button">
+                <input type=submit  value="更新" class="button">
             </div>
         </form>
     </div>
