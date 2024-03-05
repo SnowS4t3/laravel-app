@@ -345,3 +345,37 @@ img {
   border-radius: 3px;
   padding:7px;
 }
+
+.form-control {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  width: 400px;
+  height: 35px;
+}
+
+.form-control::after {
+  position: absolute;
+  right: 15px;
+  width: 30px;
+  height: 27px;
+  background-color: #4b4b4b;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  content: '';
+  pointer-events: none;
+}
+
+.form-control select {
+  appearance: none;
+  min-width: 230px;
+  height: 2.8em;
+  padding: .4em calc(.8em + 30px) .4em .8em;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 2%), 0 2px 3px -2px rgba(0 0 0 / 5%);
+  background-color: #fff;
+  color: #4b4b4b;
+  font-size: 1em;
+  cursor: pointer;
+}
+
