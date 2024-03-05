@@ -85,5 +85,6 @@ class ContactController extends Controller
         return redirect()->route('admin.list')->with('success', '状態を更新しました');
     }
 
-    
+
+
 }

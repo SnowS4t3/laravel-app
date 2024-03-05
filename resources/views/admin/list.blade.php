@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <head>
-
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
+
+ 
+<div style="position:relative;width:250px;height:250px;">
+    <canvas id="myChart"></canvas>
+</div>
+   
 
 <div class="form_list">
     <body>
