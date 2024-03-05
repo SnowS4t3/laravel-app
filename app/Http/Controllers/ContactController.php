@@ -28,9 +28,9 @@ class ContactController extends Controller
 
     public function send(Request $request)
     {
-        $data = $request->only(['name', 'mail','comment']);
+        $data = $request->only(['name', 'mail','comment','title','status']);
 
-        $attributes = $request->only(['name', 'mail','comment']);
+        $attributes = $request->only(['name', 'mail','comment','title','status']);
 
         Contact::create($attributes);
 
@@ -64,6 +64,25 @@ class ContactController extends Controller
         $this->contact->deleteContactById($id);
 
         return redirect()->route('admin.list');
+    }
+
+    public function update($id,Request $request)
+    {
+        // バリデーションなどが必要であれば追加
+
+        // Eloquentモデルを使用してデータベースのレコードを取得
+        $contact = Contact::find($id);
+
+        // フォームで選択された状態を更新
+        $contact->status = $request->input('status');
+
+        // 他にも更新すべきフィールドがあればここで追加
+
+        // レコードを保存
+        $contact->save();
+
+        // 成功メッセージやリダイレクトなどの処理を追加
+        return redirect()->route('admin.list')->with('success', '状態を更新しました');
     }
 
     

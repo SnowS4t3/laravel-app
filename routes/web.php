@@ -39,6 +39,7 @@ Route::get('contact', [ContactController::class, 'index'])->name('contact.index'
 Route::middleware('auth')->group(function () {
     Route::get('admin/list', [ContactController::class, 'list'])->name('admin.list');
     Route::get('/admin/{id}', [ContactController::class, 'detail'])->whereNumber('id')->name('admin.detail');
-    //削除
+    Route::post('/update-contact/{id}', 'App\Http\Controllers\ContactController@update')->name('update_contact');
+
     Route::delete('admin/destroy/{id}', [ContactController::class, 'destroy'])->name('admin.destroy');
 });
