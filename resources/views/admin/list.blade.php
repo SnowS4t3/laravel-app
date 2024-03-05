@@ -2,52 +2,91 @@
 <head>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
 
+<body>
  
-<div style="position:relative;width:250px;height:250px;">
-    <canvas id="myChart"></canvas>
-</div>
-   
+    <div style="position:relative; width:250px; height:250px;">
+        <canvas id="myChart" style="width:100%; height:100%;"></canvas>
+    </div>
 
-<div class="form_list">
-    <body>
+    <script type="module">
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctx = document.getElementById("myChart").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels:["未着手","着手中","完了"],
+                    datasets:[{
+                        label: '進捗状況',
+                        data: [10,20,7],
+                        backgroundColor: [
+                            'rgba(249, 100, 100, 0.623)',
+                            'rgba(86, 148, 247, 0.623)',
+                            'rgba(75, 75, 75, 0.623)',
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54,162,253,1)',
+                            'rgba(75,192,192,1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false, // アスペクト比の維持を無効化
+                    responsive: false, // グラフがレスポンシブになるのを無効化
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 25,
+                        }
+                    },
+                }
+            });
+        });
+    </script>
 
-        <table class="contact-table">
-            <thead>
+    
+
+    <div class="form_list">
+        <body>
+
+            <table class="contact-table">
+                <thead>
+                    <tr>
+                        <th>お名前</th>
+                        <th>メールアドレス</th>
+                        <th>お問い合わせ内容</th>
+                        <th>状態</th>
+                        <th>詳細</th>
+                        <th>更新日時</th>
+                        <th>削除</th>
+                    </tr>
+                </thead>
+
+                @foreach ($contacts as $contact)
                 <tr>
-                    <th>お名前</th>
-                    <th>メールアドレス</th>
-                    <th>お問い合わせ内容</th>
-                    <th>状態</th>
-                    <th>詳細</th>
-                    <th>更新日時</th>
-                    <th>削除</th>
+                    <td>{{ $contact->name }}</td>
+                    <td>{{ $contact->mail }}</td>
+                    <td>{{ $contact->comment }}</td>
+                    <td>
+                        <span class="label {{ $contact->status_class }}">{{ $contact->status_label }}</span>
+                    </td>
+                    <td><a href="{{route('admin.detail', ['id' => $contact->id])}}" class="button-list">詳細</a></td>
+                    <td><time>{{ date('Y年n月j日', strtotime($contact->updated_at)) }}</time></td>
+                    <td>
+                        <form action="{{ route('admin.destroy', ['id' => $contact->id]) }}" method="post">
+                            @csrf
+                            @method('DElETE')
+                            <button type="submit" class="button-list" onClick="return confirm('本当に削除しますか？')">削除する</button>
+                        </form>       
+                        
+                    </td>
                 </tr>
-            </thead>
-
-            @foreach ($contacts as $contact)
-            <tr>
-                <td>{{ $contact->name }}</td>
-                <td>{{ $contact->mail }}</td>
-                <td>{{ $contact->comment }}</td>
-                <td>
-                    <span class="label {{ $contact->status_class }}">{{ $contact->status_label }}</span>
-                </td>
-                <td><a href="{{route('admin.detail', ['id' => $contact->id])}}" class="button-list">詳細</a></td>
-                <td><time>{{ date('Y年n月j日', strtotime($contact->updated_at)) }}</time></td>
-                <td>
-                    <form action="{{ route('admin.destroy', ['id' => $contact->id]) }}" method="post">
-                        @csrf
-                        @method('DElETE')
-                        <button type="submit" class="button-list" onClick="return confirm('本当に削除しますか？')">削除する</button>
-                    </form>       
-                    
-                </td>
-            </tr>
-            @endforeach
-        </table>
-    </body>
-</div>
+                @endforeach
+            </table>
+        </body>
+    </div>
+</body>
