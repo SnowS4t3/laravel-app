@@ -44,13 +44,17 @@ class ContactController extends Controller
 
 
     public function list()
-    {
+{
+    $contacts = $this->contact->findAllContacts();
 
-        $contacts = $this->contact->findAllContacts();
+    $status =  [
+        1 => '1',
+        2 => '2',
+        3 => '3',
+    ];
 
-        return view('admin.list',compact('contacts'));
-
-    }
+    return view('admin.list', compact('contacts', 'status'));
+}
 
     public function detail($id)
     {
@@ -84,7 +88,6 @@ class ContactController extends Controller
         // 成功メッセージやリダイレクトなどの処理を追加
         return redirect()->route('admin.list')->with('success', '状態を更新しました');
     }
-
 
 
 }

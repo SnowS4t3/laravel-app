@@ -71,4 +71,12 @@ class Contact extends Model
 
         return self::STATUS[$status]['class'];
     }
+
+    public function getStatusAvgAndCount($id)
+    {
+        return Contact::selectRaw('contact, COUNT(*) as count')
+        ->groupBy('contact')
+        ->where('contact_id', $id)
+        ->get();
+    }
 }

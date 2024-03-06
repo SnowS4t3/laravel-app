@@ -17,14 +17,14 @@
             var myChart = new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels:["未着手","着手中","完了"],
-                    datasets:[{
+                    labels: ["完了", "着手中", "未着手"],
+                    datasets: [{
                         label: '進捗状況',
-                        data: [10,20,7],
+                        data: @json([$status[1], $status[2], $status[3]]),
                         backgroundColor: [
+                            '#4b4b4b',
+                            'rgb(86, 148, 247)',
                             'rgba(249, 100, 100, 0.623)',
-                            'rgba(86, 148, 247, 0.623)',
-                            'rgba(75, 75, 75, 0.623)',
                         ],
                         borderColor: [
                             'rgba(255,99,132,1)',
@@ -35,8 +35,8 @@
                     }]
                 },
                 options: {
-                    maintainAspectRatio: false, // アスペクト比の維持を無効化
-                    responsive: false, // グラフがレスポンシブになるのを無効化
+                    maintainAspectRatio: false,
+                    responsive: false,
                     scales: {
                         y: {
                             beginAtZero: true,
@@ -47,6 +47,7 @@
             });
         });
     </script>
+    
 
     
 
