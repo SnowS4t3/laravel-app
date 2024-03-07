@@ -123,5 +123,6 @@
                 @endforeach
             </table>
         </body>
+        {{ $contacts->links('vendor.pagination.tailwind2') }}
     </div>
 </body>

@@ -392,3 +392,7 @@ textarea {
   /* widthを100%にしておくことで、レスポンシブ対応ができます。 */
   width: 100%;
 }
+.pagination-icon {
+  width: 1rem;
+  height: 1rem;
+}

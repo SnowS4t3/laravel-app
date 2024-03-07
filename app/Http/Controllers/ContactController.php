@@ -48,20 +48,20 @@ class ContactController extends Controller
         $filterStatus = request()->input('status', null);
 
         if ($filterStatus !== null && in_array($filterStatus, [1, 2, 3])) {
-            $contacts = (new Contact)->findContactsByStatus($filterStatus);
+            $contacts = Contact::where('status', $filterStatus)->paginate(5);
         } else {
-
-            $contacts = $this->contact->findAllContacts();
+            $contacts = Contact::paginate(5);
         }
-    
-        $status =  [
+
+        $status = [
             1 => '1',
             2 => '2',
             3 => '3',
         ];
-    
+
         return view('admin.list', compact('contacts', 'status'));
     }
+
 
     public function detail($id)
     {
