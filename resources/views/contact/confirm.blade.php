@@ -39,7 +39,7 @@
                     <td>本文</td><span>必須</span>
                     <div class="form_input">
                         <input type="hidden" name="comment" value="{{ $comment }}">
-                        {{ $comment }}
+                        {!! nl2br(e($comment)) !!}
                     </div>
                 </div>
                 

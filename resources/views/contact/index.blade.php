@@ -42,9 +42,9 @@
                     </div>
 
                     <div class="form_title">
-                        <label for="comment"><td>本文</td><span>必須</span></label>
-                        <div class="">
-                            <input type="text" name="comment" value="{{old('comment')}}">
+                        <label for="comment">本文<span>必須</span></label>
+                        <div class="form_input">
+                            <textarea style="border:none;" name="comment">{{ old('comment') }}</textarea>
                             @if($errors->has('comment'))
                                 {{ $errors->first('comment') }}<br>
                             @endif

@@ -28,9 +28,9 @@ class ContactController extends Controller
 
     public function send(Request $request)
     {
-        $data = $request->only(['name', 'mail','comment']);
+        $data = $request->only(['name', 'mail','comment','title','status']);
 
-        $attributes = $request->only(['name', 'mail','comment']);
+        $attributes = $request->only(['name', 'mail','comment','title','status']);
 
         Contact::create($attributes);
 
@@ -45,24 +45,48 @@ class ContactController extends Controller
 
     public function list()
     {
+        $filterStatus = request()->input('status', null);
 
-        $contacts = $this->contact->findAllContacts();
+        if ($filterStatus !== null && in_array($filterStatus, [1, 2, 3])) {
+            $contacts = (new Contact)->findContactsByStatus($filterStatus);
+        } else {
 
-        return view('contact.list',compact('contacts'));
-
+            $contacts = $this->contact->findAllContacts();
+        }
+    
+        $status =  [
+            1 => '1',
+            2 => '2',
+            3 => '3',
+        ];
+    
+        return view('admin.list', compact('contacts', 'status'));
     }
 
     public function detail($id)
     {
         $contact = Contact::find($id);
 
-        return view('contact.detail',compact('contact'));
+        return view('admin.detail',compact('contact'));
     }
     
     public function destroy($id)
     {
         $this->contact->deleteContactById($id);
 
-        return redirect()->route('contact.list');
+        return redirect()->route('admin.list');
     }
+
+    public function update($id,Request $request)
+    {
+        $contact = Contact::find($id);
+
+        $contact->status = $request->input('status');
+
+        $contact->save();
+
+        return redirect()->route('admin.list')->with('success', '状態を更新しました');
+    }
+
+
 }

@@ -36,8 +36,14 @@ Route::get('contact', [ContactController::class, 'index'])->name('contact.index'
 Route::post('contact/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
 Route::post('contact/thanks', [ContactController::class, 'send'])->name('contact.send');
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
-Route::get('contact/list', [ContactController::class, 'list'])->name('contact.list');
-Route::get('/contact/{id}', [ContactController::class, 'detail'])->whereNumber('id')->name('contact.detail');
-// 本の削除
-Route::delete('contact/destroy/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');
+Route::middleware('auth')->group(function () {
+    Route::get('admin/list', [ContactController::class, 'list'])->name('admin.list');
+    Route::get('/admin/{id}', [ContactController::class, 'detail'])->whereNumber('id')->name('admin.detail');
+    Route::post('/update-contact/{id}', 'App\Http\Controllers\ContactController@update')->name('update_contact');
 
+    Route::delete('admin/destroy/{id}', [ContactController::class, 'destroy'])->name('admin.destroy');
+});
+
+Route::get('/chartjs', function () {
+    return view('chartjs');
+});
