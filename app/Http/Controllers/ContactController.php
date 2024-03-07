@@ -45,14 +45,12 @@ class ContactController extends Controller
 
     public function list()
     {
-        // 例えば、絞り込むステータスを URL パラメータから取得
         $filterStatus = request()->input('status', null);
-    
-        // ステータスが指定されている場合はそのステータスで絞り込み
+
         if ($filterStatus !== null && in_array($filterStatus, [1, 2, 3])) {
             $contacts = (new Contact)->findContactsByStatus($filterStatus);
         } else {
-            // ステータスが指定されていない場合は全てのコンタクトを取得
+
             $contacts = $this->contact->findAllContacts();
         }
     

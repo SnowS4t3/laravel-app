@@ -39,15 +39,12 @@ class Contact extends Model
      */
     public function getStatusLabelAttribute()
     {
-        // ステータス（状態）カラムの値を取得する
+
         $status = $this->attributes['status'];
 
-        // STATUSに定義されていない場合
         if (!isset(self::STATUS[$status])) {
-            // 空文字を返す
             return '';
         }
-        // STATUSの値（['label']）を返す
         return self::STATUS[$status]['label'];
     }
 
