@@ -19,19 +19,14 @@ class Contact extends Model
     public function __contact()
     {
         $this->contact = new Contact();
-        // return $this->belongsTo(Contact::class);
+
     }
 
     public function deleteContactById($id)
     {
-        // $deleted = Contact::where('id',$id)->delete();
-        // return $deleted;
         return $this->destroy($id);
     }
-/**
-     * ステータス（状態）定義
-     * 
-     */
+
     const STATUS = [
         1 => [ 'label' => '未着手', 'class' => 'label-danger' ],
         2 => [ 'label' => '着手中', 'class' => 'label-info' ],
@@ -78,5 +73,10 @@ class Contact extends Model
         ->groupBy('contact')
         ->where('contact_id', $id)
         ->get();
+    }
+
+    public function findContactsByStatus($status)
+    {
+        return $this->where('status', $status)->get();
     }
 }

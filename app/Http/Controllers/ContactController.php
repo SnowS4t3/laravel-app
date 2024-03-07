@@ -44,17 +44,26 @@ class ContactController extends Controller
 
 
     public function list()
-{
-    $contacts = $this->contact->findAllContacts();
-
-    $status =  [
-        1 => '1',
-        2 => '2',
-        3 => '3',
-    ];
-
-    return view('admin.list', compact('contacts', 'status'));
-}
+    {
+        // 例えば、絞り込むステータスを URL パラメータから取得
+        $filterStatus = request()->input('status', null);
+    
+        // ステータスが指定されている場合はそのステータスで絞り込み
+        if ($filterStatus !== null && in_array($filterStatus, [1, 2, 3])) {
+            $contacts = (new Contact)->findContactsByStatus($filterStatus);
+        } else {
+            // ステータスが指定されていない場合は全てのコンタクトを取得
+            $contacts = $this->contact->findAllContacts();
+        }
+    
+        $status =  [
+            1 => '1',
+            2 => '2',
+            3 => '3',
+        ];
+    
+        return view('admin.list', compact('contacts', 'status'));
+    }
 
     public function detail($id)
     {
@@ -72,20 +81,12 @@ class ContactController extends Controller
 
     public function update($id,Request $request)
     {
-        // バリデーションなどが必要であれば追加
-
-        // Eloquentモデルを使用してデータベースのレコードを取得
         $contact = Contact::find($id);
 
-        // フォームで選択された状態を更新
         $contact->status = $request->input('status');
 
-        // 他にも更新すべきフィールドがあればここで追加
-
-        // レコードを保存
         $contact->save();
 
-        // 成功メッセージやリダイレクトなどの処理を追加
         return redirect()->route('admin.list')->with('success', '状態を更新しました');
     }
 
