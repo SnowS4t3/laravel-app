@@ -43,3 +43,7 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('admin/destroy/{id}', [ContactController::class, 'destroy'])->name('admin.destroy');
 });
+
+Route::get('/chartjs', function () {
+    return view('chartjs');
+});

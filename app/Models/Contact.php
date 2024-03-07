@@ -19,19 +19,14 @@ class Contact extends Model
     public function __contact()
     {
         $this->contact = new Contact();
-        // return $this->belongsTo(Contact::class);
+
     }
 
     public function deleteContactById($id)
     {
-        // $deleted = Contact::where('id',$id)->delete();
-        // return $deleted;
         return $this->destroy($id);
     }
-/**
-     * ステータス（状態）定義
-     * 
-     */
+
     const STATUS = [
         1 => [ 'label' => '未着手', 'class' => 'label-danger' ],
         2 => [ 'label' => '着手中', 'class' => 'label-info' ],
@@ -44,15 +39,12 @@ class Contact extends Model
      */
     public function getStatusLabelAttribute()
     {
-        // ステータス（状態）カラムの値を取得する
+
         $status = $this->attributes['status'];
 
-        // STATUSに定義されていない場合
         if (!isset(self::STATUS[$status])) {
-            // 空文字を返す
             return '';
         }
-        // STATUSの値（['label']）を返す
         return self::STATUS[$status]['label'];
     }
 
@@ -70,5 +62,18 @@ class Contact extends Model
         }
 
         return self::STATUS[$status]['class'];
+    }
+
+    public function getStatusAvgAndCount($id)
+    {
+        return Contact::selectRaw('contact, COUNT(*) as count')
+        ->groupBy('contact')
+        ->where('contact_id', $id)
+        ->get();
+    }
+
+    public function findContactsByStatus($status)
+    {
+        return $this->where('status', $status)->get();
     }
 }
