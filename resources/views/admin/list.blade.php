@@ -84,11 +84,9 @@
             myChart.data.datasets[0].data = [0];
             myChart.update();
 
-            // クエリパラメータ 'status' を削除
             var url = new URL(window.location.href);
             url.searchParams.delete('status');
             
-            // URLを更新してページを再読み込み
             window.location.href = url.toString();
         });
     });
