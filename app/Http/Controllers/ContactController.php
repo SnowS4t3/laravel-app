@@ -44,24 +44,29 @@ class ContactController extends Controller
 
 
     public function list()
-    {
-        $filterStatus = request()->input('status', null);
+{
+    $filterStatus = request()->input('status', null);
 
-        if ($filterStatus !== null && in_array($filterStatus, [1, 2, 3])) {
-            $contacts = (new Contact)->findContactsByStatus($filterStatus);
-        } else {
-
-            $contacts = $this->contact->findAllContacts();
-        }
-    
-        $status =  [
-            1 => '1',
-            2 => '2',
-            3 => '3',
-        ];
-    
-        return view('admin.list', compact('contacts', 'status'));
+    if ($filterStatus !== null && in_array($filterStatus, [1, 2, 3])) {
+        $contacts = (new Contact)->findContactsByStatus($filterStatus);
+    } else {
+        $contacts = $this->contact->findAllContacts();
     }
+
+    $status = [
+        1 => '1',
+        2 => '2',
+        3 => '3',
+    ];
+
+    // ステータスごとのカウントを取得
+    $statusCounts = [];
+    foreach ($status as $value) {
+        $statusCounts[$value] = (new Contact)->getContactCountByStatus($value);
+    }
+
+    return view('admin.list', compact('contacts', 'status', 'statusCounts'));
+}
 
     public function detail($id)
     {
