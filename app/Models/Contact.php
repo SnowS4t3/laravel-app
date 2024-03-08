@@ -76,4 +76,15 @@ class Contact extends Model
     {
         return $this->where('status', $status)->get();
     }
+
+    public function getStatusSum()
+    {
+        return Contact::whereBetween('status', [1, 3])->sum('status');
+    }
+
+    public function getContactCountByStatus($status)
+    {
+        return $this->where('status', $status)->count();
+    }
+
 }

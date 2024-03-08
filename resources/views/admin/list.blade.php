@@ -12,7 +12,9 @@
 
     <script type="module">
         document.addEventListener('DOMContentLoaded', function () {
-            var initialData = @json([$status[1], $status[2], $status[3]]).reverse();
+            var initialData = @json([$status[1], $status[2], $status[3]]);
+            var statusCounts = @json($statusCounts);
+            var initialData = Object.values(statusCounts);
             var ctx = document.getElementById("myChart").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'pie',
@@ -24,7 +26,7 @@
                         backgroundColor: [
                             'rgba(249, 100, 100, 0.623)',
                             'rgb(86, 148, 247)',
-                            '#4b4b4b',
+                            '#4b4b4b'
                         ],
                         borderColor: [
                             'rgba(255,99,132,1)',
@@ -78,6 +80,15 @@
             url.searchParams.set('status', index);
             window.location.href = url.toString();
         }
+        document.getElementById("resetButton").addEventListener("click", function () {
+            myChart.data.datasets[0].data = [0];
+            myChart.update();
+
+            var url = new URL(window.location.href);
+            url.searchParams.delete('status');
+            
+            window.location.href = url.toString();
+        });
     });
     </script>
 
