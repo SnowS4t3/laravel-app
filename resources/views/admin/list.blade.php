@@ -42,55 +42,51 @@
                     onClick: onClickChart,
                 }
             });
+    
             document.getElementById("resetButton").addEventListener("click", function () {
-
-            myChart.data.datasets[0].data = [0];
-            myChart.update();
-
-            filterByStatus(0);
-        });
+                myChart.data.datasets[0].data = [0];
+                myChart.update();
+                filterByStatus(0);
+            });
     
             function onClickChart(event, data) {
-
-            var index = data[0]?.index + 1;
-
-             index = isNaN(index) ? 0 : index;
-
-            myChart.data.datasets[0].data = initialData.slice(0, index);
-            myChart.update();
-
-            filterByStatus(index);
-        }
-
-        function filterByStatus(index) {
-            var rows = document.querySelectorAll('.contact-table tbody tr');
-
-            rows.forEach(function (row, i) {
-                var statusCell = row.querySelector('.label');
-                var rowStatus = statusCell.textContent.trim();
-
-                if (index === 0 || rowStatus === '全て' || i + 1 >= index) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
+                var index = data[0]?.index + 1;
+                index = isNaN(index) ? 0 : index;
+                myChart.data.datasets[0].data = initialData.slice(0, index);
+                myChart.update();
+                filterByStatus(index);
+            }
+    
+            function filterByStatus(index) {
+                var rows = document.querySelectorAll('.contact-table tbody tr');
+    
+                rows.forEach(function (row, i) {
+                    var statusCell = row.querySelector('.label');
+                    var rowStatus = statusCell.textContent.trim();
+    
+                    if (index === 0 || rowStatus === '全て' || i + 1 >= index) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+    
+                var url = new URL(window.location.href);
+                url.searchParams.set('status', index);
+                window.location.href = url.toString();
+            }
+    
+            document.getElementById("resetButton").addEventListener("click", function () {
+                myChart.data.datasets[0].data = [0];
+                myChart.update();
+    
+                var url = new URL(window.location.href);
+                url.searchParams.delete('status');
+                window.location.href = url.toString();
             });
-
-            var url = new URL(window.location.href);
-            url.searchParams.set('status', index);
-            window.location.href = url.toString();
-        }
-        document.getElementById("resetButton").addEventListener("click", function () {
-            myChart.data.datasets[0].data = [0];
-            myChart.update();
-
-            var url = new URL(window.location.href);
-            url.searchParams.delete('status');
-            
-            window.location.href = url.toString();
         });
-    });
     </script>
+    
 
 <button id="resetButton">リセット</button>
 
