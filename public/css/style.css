@@ -396,3 +396,102 @@ textarea {
   width: 1rem;
   height: 1rem;
 }
+.relative {
+  position: relative;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.ml-px {
+  margin-left: 1px;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.text-gray-500 {
+  color: #718096; /* or any other shade of gray you prefer */
+}
+
+.bg-green-300 {
+  background-color: #ffffff; /* or any other shade of green you prefer */
+}
+
+.border {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.border-gray-300 {
+  border-color: #a0aec0; /* or any other shade of gray you prefer */
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.leading-5 {
+  line-height: 1.25rem; /* Adjust as needed */
+}
+.text-gray-700 {
+  color: #4a5568; /* or any other shade of gray you prefer */
+}
+
+.bg-white {
+  background-color: #ffffff; /* or any other color you prefer */
+}
+.hover\:text-gray-500:hover {
+  color: #718096; /* or any other shade of gray you prefer */
+}
+
+.focus\:z-10:focus {
+  z-index: 10;
+}
+
+.focus\:outline-none:focus {
+  outline: none;
+}
+
+.focus\:border-blue-300:focus {
+  border-color: #4a90e2; /* or any other shade of blue you prefer */
+}
+
+.active\:bg-gray-100:active {
+  background-color: #f7fafc; /* or any other shade you prefer */
+}
+
+.active\:text-gray-700:active {
+  color: #4a5568; /* or any other shade of gray you prefer */
+}
+
+.transition {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+p {
+  text-align: right;
+}
+.pagenation {
+  text-align: right;
+}
