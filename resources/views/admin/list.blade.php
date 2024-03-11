@@ -110,7 +110,7 @@
                 <tr>
                     <td>{{ $contact->name }}</td>
                     <td>{{ $contact->mail }}</td>
-                    <td>{{ $contact->comment }}</td>
+                    <td>{{  Str::limit($contact->comment, 30, '...') }}</td>
                     <td>
                         <span class="label {{ $contact->status_class }}" onclick="filterByStatus('{{ $contact->status_label }}')">
                             {{ $contact->status_label }}
