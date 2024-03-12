@@ -43,10 +43,10 @@
 
                     <div class="form_title">
                         <label for="comment">本文<span>必須</span></label>
-                        <div class="form_input">
-                            <textarea style="border:none;" name="comment">{{ old('comment') }}</textarea>
+                        <div class="">
+                            <textarea class="Form-Textarea" name="comment">{{ old('comment') }}</textarea>
                             @if($errors->has('comment'))
-                                {{ $errors->first('comment') }}<br>
+                                    {{ $errors->first('comment') }}<br>
                             @endif
                         </div>
                     </div>
